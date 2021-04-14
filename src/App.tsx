@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import {useSelector} from "react-redux";
+import {selectStep} from "./store/selectors";
+
+import GameBoard from "./components/GameBoard/GameBoard";
+import SelectNames from "./components/SelectNamesForm/SelectNames";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const step = useSelector(selectStep)
+
+    return (
+        <div className="flex-container">
+            <div className="flex-justify">
+                {step === 1 && <SelectNames/>}
+                {step === 2 && <GameBoard/>}
+            </div>
+        </div>
+    );
 }
 
 export default App;
