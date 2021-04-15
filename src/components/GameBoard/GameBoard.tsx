@@ -26,7 +26,7 @@ const GameBoard: FC<IProps> = () => {
 
         dispatch(setMove({value, target}))
         dispatch(setTurn())
-    }, [winner, board])
+    }, [winner, board, dispatch, turn])
 
     const renderBoard = useMemo(() => {
         return [[0, 1, 2], [3, 4, 5], [6, 7, 8]].map((column) => {
@@ -36,7 +36,7 @@ const GameBoard: FC<IProps> = () => {
                 </div>
             )
         })
-    }, [handleMove])
+    }, [handleMove, board])
 
     return (
         <div className='game-container'>
